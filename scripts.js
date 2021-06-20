@@ -1,4 +1,4 @@
-//function declarations
+//basic math function declarations
 function add(num1, num2) {
     return num1 + num2
 }
@@ -16,5 +16,6 @@ function divide(num1, num2) {
 }
 
 function operate(operator, num1, num2) {
+    //operates two numbers using the operator
     return this[operator](num1, num2)
 }
