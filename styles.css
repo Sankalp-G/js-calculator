@@ -42,15 +42,15 @@ body{
 }
 
 #subDisplay{
-    height: 25%;
     font-family: pixelText;
-    padding: 5%;
-    padding-bottom: 3%;
     float: right;
 }
 
 #subDisplayContainer{
   width:100%;
+  padding: 5%;
+  padding-bottom: 3%;
+  height: 25%;
   margin-left:auto;
   margin-right:auto;
   text-align:right;
