@@ -27,6 +27,8 @@ function operate(operator, num1, num2) {
     if (operator == '-'){operator = 'subtract'}
     if (operator == '/'){operator = 'divide'}
     if (operator == '*'){operator = 'multiply'}
+    num1 = Number(num1)
+    num2 = Number(num2)
 
     return this[operator](num1, num2)
 }
