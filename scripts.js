@@ -23,6 +23,11 @@ function divide(num1, num2) {
 
 function operate(operator, num1, num2) {
     //operates two numbers using the operator
+    if (operator == '+'){operator = 'add'}
+    if (operator == '-'){operator = 'subtract'}
+    if (operator == '/'){operator = 'divide'}
+    if (operator == '*'){operator = 'multiply'}
+
     return this[operator](num1, num2)
 }
 
