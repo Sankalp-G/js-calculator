@@ -140,19 +140,17 @@ calcButtons.forEach(button => {
             let subSplit = subDisplay.textContent.split(' ')
 
             //if subdisplay is empty evaluvate elements in the main display
-            if(subDisplay.textContent == ''){
-                if (!isNaN(mainSplit[0]) && (['/', '*', '-', '+'].indexOf(mainSplit[1]) + 1) && !isNaN(mainSplit[2])) {
-                    subDisplay.textContent = mainDisplay.textContent + " = "
-                    mainDisplay.textContent = operate(mainSplit[1], mainSplit[0], mainSplit[2])
-                }
+            if(subDisplay.textContent == '' && !isNaN(mainSplit[0]) && (['/', '*', '-', '+'].indexOf(mainSplit[1]) + 1) && !isNaN(mainSplit[2]) && mainSplit[2] !== ''){
+                subDisplay.textContent = mainDisplay.textContent + " = "
+                mainDisplay.textContent = operate(mainSplit[1], mainSplit[0], mainSplit[2])
             }
             //if subdisplay and maindiplay has valid numbers and operator AND an equals sign then evaluvate using old result
-            if (!isNaN(subSplit[0]) && (['/', '*', '-', '+'].indexOf(subSplit[1]) + 1) && !isNaN(mainSplit[0]) && subSplit[subSplit.length - 2] == '='){
+            else if (!isNaN(subSplit[0]) && (['/', '*', '-', '+'].indexOf(subSplit[1]) + 1) && !isNaN(mainSplit[0]) && subSplit[subSplit.length - 2] == '='){
                 subDisplay.textContent = mainSplit[0] + " " + subSplit[1] + " " + subSplit[2] + " = "
                 mainDisplay.textContent = operate(subSplit[1], mainSplit[0], subSplit[2])
             }
             //if subdisplay and maindiplay has valid numbers and operator then evaluvate sub and main display
-            else if (!isNaN(subSplit[0]) && (['/', '*', '-', '+'].indexOf(subSplit[1]) + 1) && !isNaN(mainSplit[0]) && mainDisplay.textContent !== ''){
+            else if (!isNaN(subSplit[0]) && (['/', '*', '-', '+'].indexOf(subSplit[1]) + 1) && !isNaN(mainSplit[0]) && mainSplit[2] !== ''){
                 subDisplay.textContent = subSplit[0] + " " + subSplit[1] + " " + mainSplit[0] + " = "
                 mainDisplay.textContent = operate(subSplit[1], subSplit[0], mainSplit[0])
             }
