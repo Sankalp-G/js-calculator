@@ -91,13 +91,38 @@ calcButtons.forEach(button => {
     }
 })
 
-//partial operator logic
+//operator logic
 calcButtons.forEach(button => {
     if(['/', '*', '-', '+'].indexOf(button.textContent) + 1){
         button.addEventListener('click', () => {
-                mainDisplay.textContent += ' '+button.textContent+' ';
-            })
-        }
+            let mainSplit = mainDisplay.textContent.split(' ')
+            let subSplit = subDisplay.textContent.split(' ')
+
+            //if sub display is empty and there is only one number is in main display append an operator
+            if (subDisplay.textContent == '' && !isNaN(mainSplit[0]) && mainSplit[0] !== '' && !(mainSplit.indexOf('+') + 1) && !(mainSplit.indexOf('-') + 1) && !(mainSplit.indexOf('/') + 1) && !(mainSplit.indexOf('*') + 1)){
+                mainDisplay.textContent += ` ${button.textContent} `
+            }
+            //if subdisplay is empty and there are two numbers with an operator in the main display
+            else if (subDisplay.textContent == '' && !isNaN(mainSplit[0]) && (['/', '*', '-', '+'].indexOf(mainSplit[1]) + 1) && !isNaN(mainSplit[2])){
+                subDisplay.textContent = operate(mainSplit[1], mainSplit[0], mainSplit[2]) + ` ${button.textContent} `
+                mainDisplay.textContent = ''
+            }
+            //if equal to is present in subdisplay
+            else if (subSplit[subSplit.length - 2] == '='){
+                mainDisplay.textContent += ` ${button.textContent} `
+                subDisplay.textContent = ''
+            }
+            //if subdisplay has a number and an operator, maindisplay has a number
+            else if (!isNaN(subSplit[0]) && (['/', '*', '-', '+'].indexOf(subSplit[1]) + 1) && !isNaN(mainSplit[0]) && !(mainDisplay.textContent == '')){
+                subDisplay.textContent = operate(subSplit[1], subSplit[0], mainSplit[0]) + ` ${button.textContent} `
+                mainDisplay.textContent = ''
+            }
+            //if there is already an operator in display replace the operator
+            else if (!isNaN(subSplit[0]) && (['/', '*', '-', '+'].indexOf(subSplit[1]) + 1) && mainDisplay.textContent == ''){
+                subDisplay.textContent = subSplit[0] + ` ${button.textContent} `
+            }
+        })
+    }
 })
 
 //eval button logic
