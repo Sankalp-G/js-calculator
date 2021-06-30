@@ -70,7 +70,11 @@ calcButtons.forEach(button => {
 calcButtons.forEach(button => {
     if (button.textContent == '.') {
         button.addEventListener('click', () => {
-            if (mainDisplay.textContent == '') { mainDisplay.textContent += '0.' }
+            if ((subDisplay.textContent.split('').indexOf('=') + 1)){
+                subDisplay.textContent = '';
+                mainDisplay.textContent = '0.';
+            }
+            else if (mainDisplay.textContent == '') { mainDisplay.textContent += '0.' }
             else if ((['/', '*', '-', '+'].indexOf(mainDisplay.textContent.split(' ')[mainDisplay.textContent.split(' ').length - 2]) + 1) == 0
                 && mainDisplay.textContent.split('').indexOf('.') == -1) { mainDisplay.textContent += '.' }
             else {
