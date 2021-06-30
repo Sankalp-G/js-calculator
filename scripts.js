@@ -159,3 +159,22 @@ calcButtons.forEach(button => {
         })
     }
 })
+
+//backspace logic
+calcButtons.forEach(button => {
+    if (button.textContent == '←'){
+        button.addEventListener('click', () => {
+            let mainSplit = mainDisplay.textContent.split(' ')
+            let subSplit = subDisplay.textContent.split(' ')
+            let mainFullSplit = mainDisplay.textContent.split('')
+
+            if (subDisplay.textContent == '' && (['/', '*', '-', '+'].indexOf(mainSplit[1]) + 1) && mainSplit[2] == ''){
+                mainDisplay.textContent = mainSplit[0]
+            }
+            else if (!(subSplit.indexOf('=') + 1)){
+                mainFullSplit.pop()
+                mainDisplay.textContent = mainFullSplit.join('')
+            }
+        })
+    }
+})
