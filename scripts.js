@@ -55,7 +55,13 @@ let numericals = ['1','2','3','4','5','6','7','8','9','0']
 calcButtons.forEach(button => {
     if (numericals.indexOf(button.textContent) + 1) {
         button.addEventListener('click', () => {
-            mainDisplay.textContent += button.textContent;
+            if ((subDisplay.textContent.split('').indexOf('=') + 1)){
+                subDisplay.textContent = '';
+                mainDisplay.textContent = button.textContent;
+            }
+            else {
+                mainDisplay.textContent += button.textContent;
+            }
         })
     }
 })
