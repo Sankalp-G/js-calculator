@@ -105,6 +105,10 @@ calcButtons.forEach(button => {
             if (subDisplay.textContent == '' && !isNaN(mainSplit[0]) && mainSplit[0] !== '' && !(mainSplit.indexOf('+') + 1) && !(mainSplit.indexOf('-') + 1) && !(mainSplit.indexOf('/') + 1) && !(mainSplit.indexOf('*') + 1)){
                 mainDisplay.textContent += ` ${button.textContent} `
             }
+            //if sub display is empty and there is one number and an operator, replace the operator
+            else if (subDisplay.textContent == '' && !isNaN(mainSplit[0]) && (['/', '*', '-', '+'].indexOf(mainSplit[1]) + 1) && mainSplit[2] == ''){
+                mainDisplay.textContent = mainSplit[0] + ` ${button.textContent} `
+            }
             //if subdisplay is empty and there are two numbers with an operator in the main display
             else if (subDisplay.textContent == '' && !isNaN(mainSplit[0]) && (['/', '*', '-', '+'].indexOf(mainSplit[1]) + 1) && !isNaN(mainSplit[2])){
                 subDisplay.textContent = operate(mainSplit[1], mainSplit[0], mainSplit[2]) + ` ${button.textContent} `
