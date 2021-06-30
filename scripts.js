@@ -30,7 +30,10 @@ function operate(operator, num1, num2) {
     num1 = Number(num1)
     num2 = Number(num2)
 
-    return this[operator](num1, num2)
+    let result = this[operator](num1, num2)
+
+    return Math.round((result + Number.EPSILON) * 100000) / 100000
+
 }
 
 ////logic to construct calculator buttons
