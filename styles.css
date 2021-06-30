@@ -38,7 +38,7 @@ body{
 
 @font-face {
     font-family: pixelText;
-    src: url(/fonts/LcdSolid112-53XV.ttf);
+    src: url(./fonts/LcdSolid112-53XV.ttf);
 }
 
 #subDisplay{
