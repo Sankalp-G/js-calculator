@@ -186,3 +186,29 @@ calcButtons.forEach(button => {
         })
     }
 })
+
+
+//keyboard support
+
+function triggerButton (symbol){
+    calcButtons.forEach(button => {
+        if (button.textContent == symbol){
+            button.click()
+        }
+    })
+}
+
+document.addEventListener('keydown', keyButton => {
+    let keyTemplate = buttonsTemplate.map(symbol => {return String(symbol)})
+
+    console.log(keyButton.key)
+    if ((keyTemplate.indexOf(keyButton.key) + 1)){
+        triggerButton(keyButton.key)
+    }
+    else if (keyButton.key == 'Enter'){
+        triggerButton('=')
+    }
+    else if (keyButton.key == 'Backspace'){
+        triggerButton('←')
+    }
+})
