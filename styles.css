@@ -44,6 +44,7 @@ body{
 #subDisplay{
     font-family: pixelText;
     float: right;
+    font-size: 3vmin;
 }
 
 #subDisplayContainer{
